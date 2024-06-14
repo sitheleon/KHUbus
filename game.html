@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Snake Game</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .home-button {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: background-color 0.3s ease;
+    }
+    .home-button:hover {
+      background-color: #45a049;
+    }
+    #bus-info {
+      position: absolute;
+      top: 50px;
+      left: 10px;
+      background-color: rgba(0, 0, 0, 0.7);
+      color: white;
+      padding: 10px;
+      border-radius: 5px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <a href="index.html" class="home-button">홈으로 가기</a>
+  <div id="bus-info"></div>
+  <div class="container">
+    <h1>Snake Game</h1>
+    <button id="startButton">Start Game</button>
+    <canvas id="gameCanvas"></canvas>
+    <div id="controls" style="display: none;">
+      <div id="controlButtons">
+        <button class="control-btn up" id="upBtn"><img src="up.png" alt="Up"></button>
+        <button class="control-btn left" id="leftBtn"><img src="left.png" alt="Left"></button>
+        <button class="control-btn right" id="rightBtn"><img src="right.png" alt="Right"></button>
+        <button class="control-btn down" id="downBtn"><img src="down.png" alt="Down"></button>
+      </div>
+    </div>
+    <div class="footer">KHUbus</div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

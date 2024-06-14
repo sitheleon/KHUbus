@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="bus.css">
+    <title>사색의 광장 버스 도착 정보</title>
+</head>
+<body>
+    <div class="container">
+        <div id="currentdate"></div>
+        <div class="bus-info" id="bus-type-1">
+           <h2>9번 (구운동) <img src="subway-icon.png" class="subway-icon" id="subway-9">  <button class="fare-btn" data-bus="9번 (구운동)">유료 탑승 가능</button></h2>
+            <p>다음 버스 도착 시간: <span id="next-bus-type-1"></span></p>
+            <p>첫 차: 오전 5시 55분</p>
+            <p>막차: 오후 10시 50분</p>
+        </div>
+        <div class="bus-info" id="bus-type-2">
+            <h2>1112번<img src="subway-icon.png" class="subway-icon" id="subway-9"><button class="fare-btn" data-bus="1112번">유료 탑승 가능</button></h2>
+            <p>다음 버스 도착 시간: <span id="next-bus-type-2"></span></p>
+            <p>첫 차: 오전 4시 40분</p>
+            <p>막차: 오후 10시 30분</p>
+        </div>
+        <div class="bus-info" id="bus-type-3">
+            <h2>1560번</h2>
+          
+            <p>다음 버스 도착 시간: <span id="next-bus-type-3"></span></p>
+            <p>첫 차: 오전 5시</p>
+            <p>막차: 오후 10시 30분</p>
+        </div>
+        <div class="bus-info" id="bus-type-4">
+            <h2>5100번<img src="subway-icon.png" class="subway-icon" id="subway-9"><button class="fare-btn" data-bus="5100번">유료 탑승 가능</button></h2>
+            <p>다음 버스 도착 시간: <span id="next-bus-type-4"></span></p>
+            <p>첫 차: 오전 5시 30분</p>
+            <p>막차: 오전 12시 10분</p>
+        </div>
+        <div class="bus-info" id="bus-type-5">
+            <h2>7000번<img src="subway-icon.png" class="subway-icon" id="subway-9"><button class="fare-btn" data-bus="7000번">유료 탑승 가능</button></h2>
+            <p>다음 버스 도착 시간: <span id="next-bus-type-5"></span></p>
+            <p>첫 차: 오전 5시 30분</p>
+            <p>막차: 오전 12시</p>
+        </div>
+        <div class="bus-info" id="bus-type-6">
+            <h2>M5107번</h2>
+            <p>다음 버스 도착 시간: <span id="next-bus-type-6"></span></p>
+            <p>첫 차: 오전 5시</p>
+            <p>막차: 오후 11시</p>
+        </div>
+        <button id="reset-button">새로고침</button>
+        <button id="speak-button">버스 정보 읽기</button>
+        <button id="game-button" onclick="location.href='game.html'">게임으로 이동</button>
+    </div>
+
+    <!-- Modal -->
+    <div id="fareModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p id="modal-text"></p>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2024 끝내조</p>
+    </footer>
+
+    <div id="intro-message" style="display:none;">오른쪽 상단에 버스 정보 읽기 버튼이 있습니다.</div>
+
+    <script>
+        const busInfo = [
+            { id: 1, name: "9번 (구운동)", routeId: "200000103", timetable: ["05:35", "06:05", "06:25", "06:50", "07:10", "07:30", "08:15", "08:45", "09:15", "09:45", "10:15", "10:45", "11:10", "11:40", "12:10", "12:35", "13:05", "13:35", "14:05", "14:35", "15:05", "15:35", "16:05", "16:30", "17:00", "17:30", "18:00", "18:30", "19:00", "19:30", "20:00", "20:30", "21:00", "21:30", "22:00", "22:30", "23:00"] },
+            { id: 2, name: "1112번", routeId: "234000016", timetable: ["04:40", "04:50", "05:00", "05:10", "05:20", "05:30", "05:40", "05:50", "06:00", "06:10", "06:20", "06:30", "06:40", "06:50", "07:00", "07:10", "07:20", "07:30", "07:40", "07:50", "08:00", "08:10", "08:20", "08:30", "08:40", "08:50", "09:00", "09:10", "09:20", "09:30", "09:40", "09:50", "10:00", "10:10", "10:20", "10:30", "10:40", "10:50", "11:00", "11:10", "11:20", "11:30", "11:40", "11:50", "12:00", "12:10", "12:20", "12:30", "12:40", "12:50", "13:00", "13:10", "13:20", "13:30", "13:40", "13:50", "14:00", "14:10", "14:20", "14:30", "14:40", "14:50", "15:00", "15:10", "15:20", "15:30", "15:40", "15:50", "16:00", "16:10", "16:20", "16:30", "16:40", "16:50", "17:00", "17:10", "17:20", "17:30", "17:40", "17:50", "18:00", "18:10", "18:20", "18:30", "18:40", "18:50", "19:00", "19:10", "19:20", "19:30", "19:40", "19:50", "20:00", "20:10", "20:20", "20:30", "20:40", "20:50", "21:00", "21:10", "21:20", "21:30", "21:40", "21:50", "22:00", "22:10", "22:20", "22:30", "22:40", "22:50", "23:00", "23:10", "23:20", "23:30", "23:40"] },
+            { id: 3, name: "1560번", routeId: "234000884", timetable: ["05:00", "05:15", "05:30", "05:45", "06:00", "06:13", "06:26", "06:39", "06:52", "07:05", "07:20", "07:40", "08:00", "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00", "16:30", "17:00", "17:30", "18:00", "18:30", "19:00", "19:30", "20:00", "20:25", "20:45", "21:05", "21:25", "21:45", "22:05", "22:25", "22:45", "23:10", "23:30", "23:50"] },
+            { id: 4, name: "5100번", routeId: "200000115", timetable: ["05:30", "05:40", "05:50", "06:00", "06:10", "06:24", "06:32", "06:44", "06:57", "07:13", "07:25", "07:34", "07:44", "07:56", "08:07", "08:22", "08:38", "08:54", "09:06", "09:20", "09:50", "10:10", "10:30", "11:00", "11:24", "11:36", "11:46", "12:00", "12:12", "12:24", "12:36", "12:50", "13:03", "13:13", "13:26", "13:40", "13:53", "14:04", "14:18", "14:32", "14:44", "14:56", "15:10", "15:24", "15:36", "15:50", "16:02", "16:14", "16:26", "16:40", "16:52", "17:04", "17:16", "17:30", "17:44", "17:56", "18:10", "18:20", "18:30", "18:40", "18:50", "19:00", "19:10", "19:20", "19:30", "19:40", "19:50", "20:00", "20:10", "20:20", "20:30", "20:40", "20:50", "21:00", "21:10", "21:20", "21:30", "21:40", "21:50", "22:00", "22:10", "22:20", "22:30", "22:40", "22:50", "23:00", "23:10", "23:20", "23:35", "23:45"] },
+            { id: 5, name: "7000번", routeId: "200000112", timetable: ["05:00", "05:20", "05:40", "06:00", "06:20", "06:40", "07:00", "07:20", "07:40", "08:00", "08:20", "08:40", "09:00", "09:20", "09:40", "10:00", "10:20", "10:40", "11:00", "11:20", "11:40", "12:00", "12:20", "12:40", "13:00", "13:20", "13:40", "14:00", "14:20", "14:40", "15:00", "15:20", "15:40", "16:00", "16:20", "16:40", "17:00", "17:20", "17:40", "18:00", "18:20", "18:40", "19:00", "19:20", "19:40", "20:00", "20:20", "20:40", "21:00", "21:20", "21:40", "22:00", "22:20", "22:40", "23:00", "23:20", "23:40"] },
+            { id: 6, name: "M5107번", routeId: "234001243", timetable: ["05:00", "05:20", "05:40", "06:00", "06:20", "06:40", "07:00", "07:20", "07:40", "08:00", "08:20", "08:40", "09:00", "09:20", "09:40", "10:00", "10:20", "10:40", "11:00", "11:20", "11:40", "12:00", "12:20", "12:40", "13:00", "13:20", "13:40", "14:00", "14:20", "14:40", "15:00", "15:20", "15:40", "16:00", "16:20", "16:40", "17:00", "17:20", "17:40", "18:00", "18:20", "18:40", "19:00", "19:20", "19:40", "20:00", "20:20", "20:40", "21:00", "21:20", "21:40", "22:00", "22:20", "22:40", "23:00", "23:20", "23:40"] }
+        ];
+        const apiUrl = "https://apis.data.go.kr/6410000/busarrivalservice/getBusArrivalItem";
+        const serviceKey = "YRuC6%2BV28KDcFVmVTTsWUrvWIQBVA0nirS1hNziuWaFkg2VUd1FJOTL%2FiG3BpnDReQVSZThL%2F%2BZb0IN8CEzJcQ%3D%3D";
+        const stationId = "228000723";
+
+        async function fetchRealTimeData(routeId) {
+            const url = `${apiUrl}?serviceKey=${serviceKey}&stationId=${stationId}&routeId=${routeId}`;
+            try {
+                const response = await fetch(url);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const text = await response.text();
+                const parser = new DOMParser();
+                const xmlDoc = parser.parseFromString(text, "application/xml");
+                const busArrivalList = Array.from(xmlDoc.getElementsByTagName("busArrivalList"));
+                return busArrivalList.map(item => ({
+                    predictTime1: item.getElementsByTagName("predictTime1")[0].textContent,
+                }));
+            } catch (error) {
+                console.error('Error fetching real-time data:', error);
+                return null;
+            }
+        }
+
+
+        // bus.js
+        document.addEventListener("DOMContentLoaded", () => {
+    const fareButtons = document.querySelectorAll(".fare-btn");
+    const modal = document.getElementById("fareModal");
+    const modalText = document.getElementById("modal-text");
+    const span = document.getElementsByClassName("close")[0];
+
+    fareButtons.forEach(button => {
+        button.addEventListener("click", () => {
+            const bus = button.getAttribute("data-bus");
+            modalText.innerHTML = `${bus} 유료 탑승 희망 <br><span style="color: red;"><<주의! 꼭 카드를 태그하고 탑승하세요>></span>`;
+            modal.style.display = "block";
+        });
+    });
+
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+});
+
+
+
+        async function updateNextBusTime() {
+    let imminentBuses = [];
+    const currentTime = new Date();
+    const now = currentTime.getHours() * 60 + currentTime.getMinutes();
+
+    for (const bus of busInfo) {
+        const nextBusTime = getNextBusTime(now, bus.timetable);
+        const realTimeData = await fetchRealTimeData(bus.routeId); // routeId를 넘겨줌
+
+        let predictTimeText = "도착 정보 없음";
+        if (realTimeData && realTimeData.length > 0 && realTimeData[0].predictTime1) {
+            const realTime = realTimeData[0].predictTime1;
+            if (parseInt(realTime) === 0) {
+                predictTimeText = "곧 도착";
+            } else {
+                predictTimeText = `${realTime}분 후 도착 (실시간)`;
+            }
+        } else if (nextBusTime !== null) {
+            if (nextBusTime === 0) {
+                predictTimeText = "곧 도착";
+            } else {
+                predictTimeText = `${nextBusTime}분 후 도착`;
+            }
+        }
+
+        document.getElementById("next-bus-type-" + bus.id).textContent = predictTimeText;
+
+        if (nextBusTime !== null && nextBusTime <= 1) {
+            imminentBuses.push(`${bus.name}: ${predictTimeText}`);
+        }
+    }
+    sessionStorage.setItem('imminentBuses', JSON.stringify(imminentBuses));
+}
+
+
+        function getNextBusTime(now, timetable) {
+            for (const time of timetable) {
+                const [hour, minute] = time.split(":").map(Number);
+                const minutes = hour * 60 + minute;
+                if (minutes >= now) {
+                    return minutes - now;
+                }
+            }
+            return null;
+        }
+
+        function updateCurrentTime() {
+            const currentDateElement = document.getElementById("currentdate");
+            const currentTime = new Date().toLocaleString("ko-KR");
+            currentDateElement.textContent = currentTime;
+        }
+
+        function speakBusInfo() {
+            let speechText = "";
+
+            busInfo.forEach(bus => {
+                const busElement = document.getElementById("next-bus-type-" + bus.id);
+                if (busElement) {
+                    const busTime = busElement.textContent;
+                    speechText += `${bus.name}: ${busTime}. `;
+                }
+            });
+
+            if (window.ReactNativeWebView) {
+                window.ReactNativeWebView.postMessage(speechText);
+            } else {
+                console.log(speechText);
+            }
+        }
+
+        function speakIntroMessage() {
+            const introMessage = document.getElementById("intro-message").textContent;
+            if (window.ReactNativeWebView) {
+                window.ReactNativeWebView.postMessage(introMessage);
+            } else {
+                console.log(introMessage);
+            }
+        }
+
+        updateNextBusTime();
+        updateCurrentTime();
+
+        setInterval(updateNextBusTime, 60000);
+        setInterval(updateCurrentTime, 1000);
+
+        document.getElementById("reset-button").addEventListener("click", updateNextBusTime);
+        document.getElementById("speak-button").addEventListener("click", speakBusInfo);
+
+        async function predictAllDepartureTimes() {
+    const currentTime = new Date();
+    const currentHour = currentTime.getHours();
+    const currentMinute = currentTime.getMinutes();
+    const currentTotalMinutes = currentHour * 60 + currentMinute;
+
+    for (const bus of busInfo) {
+        // 가장 가까운 기점 출발 시간을 찾기 위해 기점 출발 시간표를 순회합니다.
+        let nearestDepartureTime = null;
+        for (const departureTime of bus.timetable) {
+            const [hour, minute] = departureTime.split(":").map(Number);
+            let departureTotalMinutes = hour * 60 + minute;
+
+            if (departureTotalMinutes >= currentTotalMinutes) {
+                nearestDepartureTime = departureTotalMinutes + 4; // 4분 추가
+                break;
+            }
+        }
+
+        if (nearestDepartureTime !== null) {
+            const minutesUntilNextBus = nearestDepartureTime - currentTotalMinutes;
+            document.getElementById("next-bus-type-" + bus.id).textContent = `예상 기점 출발 시간: ${nearestDepartureTime}분 (${Math.floor(minutesUntilNextBus / 60)}시간 ${minutesUntilNextBus % 60}분 후)`;
+        } else {
+            document.getElementById("next-bus-type-" + bus.id).textContent = `${bus.name} 다음 운행 시간을 찾을 수 없습니다.`;
+        }
+    }
+}
+
+
+        speakIntroMessage();
+    </script>
+</body>
+</html>
