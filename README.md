@@ -26,6 +26,6 @@ Features for our Extreme Persona:
 Developer had limited knowledge about HTML, CSS only. Developed mainly with help of Chat-GPT, and Youtube tutorials about EXPO web-view app making.
 
 
-
+Made with my team, thanks to two KHU team members
 
 COPYRIGHT@Sitheleon ALL RIGHTS RESERVED.
