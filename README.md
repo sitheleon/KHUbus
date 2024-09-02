@@ -22,7 +22,7 @@ Main Features:
 
 Features for our Extreme Persona:
 1. Our Persona has visual impairment
-2. Upon starting the application, application initiates vibration feedback to inform the application has been started
+2. Upon starting the application, application initiates vibration feedback (EXPO feature as well) to inform the application has been started
 3. After giving out vibration feedback, the application informs the button location of Bus Information Reading
 
 
