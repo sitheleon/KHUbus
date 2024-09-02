@@ -6,7 +6,7 @@
 
 <h2>Javascript for snakegame developement</h2>
 
-<h2>Netlify for Uploading online (https://khubus.netlify.app) </h2>
+<h2>Netlify for Uploading online ((https://kaleidoscopic-cranachan-3f003f.netlify.app)) </h2>
 
 <h2>React Native (EXPO) for Web-View App Publishing</h2>
 
