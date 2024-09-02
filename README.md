@@ -1,14 +1,16 @@
 <h1> DEVELOPED BY LEE SI HYEON / KHU DIGITAL CONTENTS </h1>
 <h2> Developed through 1 Semester (apporximately 4 month)</h2>
 
+<PORTFOLIO>
 
-<h2> HTML CSS for a Web development</h2>
+<h3> HTML CSS for a Web development</h3>
 
-<h2>Javascript for snakegame developement</h2>
 
-<h2>Netlify for Uploading online ((https://kaleidoscopic-cranachan-3f003f.netlify.app)) </h2>
+<h3>Javascript for Snakegame developement</h3>
 
-<h2>React Native (EXPO) for Web-View App Publishing</h2>
+<h3>Netlify for Uploading online ((https://kaleidoscopic-cranachan-3f003f.netlify.app)) </h3>
+
+<h3>React Native (EXPO) for Web-View App Publishing</h3>
 
 
 Main Features:
