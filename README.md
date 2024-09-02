@@ -1,5 +1,6 @@
 <h1> DEVELOPED BY LEE SI HYEON / KHU DIGITAL CONTENTS </h1>
 <h2> Developed through 1 Semester (apporximately 4 month)</h2>
+<h2> 2024-1 KyungHee University SWCON Design Thinking (PROJECT) </h2>
 
 <PORTFOLIO>
 
