@@ -13,6 +13,8 @@
 
 <h3>React Native (EXPO) for Web-View App Publishing</h3>
 
+APK File Link: https://drive.google.com/file/d/1gSCc0M_kl1sDzaW4V-NiyeDjtJuxiUV1/view?usp=sharing
+
 
 Main Features:
 1. Used (Data.go.kr) 공공데이터포털 API for real-time bus information fetching
